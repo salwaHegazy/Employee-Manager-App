@@ -10,16 +10,69 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var inputsalary : Int = 0
+    var salary : Int = 0
+    
+    
+    
+    @IBOutlet weak var salaryTextField: UITextField!
+    
+    @IBAction func salaryTF(_ sender: Any) {
+        
+        if (salaryTextField.text?.isEmpty)!{
+            
+        salaryLabel.text = "please enter salary"
+        salary = 0
+            
+        }else {
+        
+            salaryLabel.text = ""
+            
+        }
+        
+        
+    }
+    
+    
+    @IBOutlet weak var salaryLabel: UILabel!
+    
+  
+    @IBAction func employeeButton(_ sender: Any) {
+        
+       
+         var employee = Employee()
+          salary = GetText()
+        salaryLabel.text =  String (employee.getSalary(inputSalary: salary ))
+        
+
+    }
+    
+    
+    @IBAction func managerButton(_ sender: Any) {
+        
+    
+        var manager = Manager()
+         salary = GetText()
+       salaryLabel.text =  String (manager.getSalary(inputSalary: salary ))
+       
+        
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        salaryTextField.text = "0"
+
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+ 
+    func GetText() -> Int {
+        
+             inputsalary = Int ((salaryTextField.text) ?? "") ?? 0
+        
+       return inputsalary
     }
-
-
 }
-
